@@ -26,11 +26,15 @@ public class Ej_Insertar {
             int totalFilas = 0;
 
             for (double moneda : monedas) {
-                BigDecimal valorMoneda = BigDecimal.valueOf(moneda);
-                BigDecimal cantidad = BigDecimal.valueOf(Math.random() * 10); // aleatorio 0–10
+                //BigDecimal valorMoneda = BigDecimal.valueOf(moneda);
+                Double valorMoneda = Double.valueOf(moneda);
+                //BigDecimal cantidad = BigDecimal.valueOf(Math.random() * 10); // aleatorio 0–10
+                int cantidad = Integer.valueOf((int) (Math.random() * 10));
 
-                sentencia.setBigDecimal(1, valorMoneda);
-                sentencia.setBigDecimal(2, cantidad);
+                //sentencia.setBigDecimal(1, valorMoneda);
+                sentencia.setDouble(1, valorMoneda);
+                //sentencia.setBigDecimal(2, cantidad);
+                sentencia.setInt(2, cantidad);
 
                 int filas = sentencia.executeUpdate();
                 totalFilas += filas;
@@ -39,7 +43,7 @@ public class Ej_Insertar {
             System.out.println("Filas insertadas: " + totalFilas);
 
         } catch (SQLException ex) {
-            System.err.format("Error SQL: %s (estado: %s)%n", ex.getMessage(), ex.getSQLState());
+        	System.err.format("%s %s", ex.getMessage(), ex.getSQLState());
         } catch (Exception ex) {
             ex.printStackTrace();
         }

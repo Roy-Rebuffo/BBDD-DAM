@@ -8,8 +8,8 @@ import java.sql.SQLException;
 
 public class Ej_CrearTabla {
 	private static final String SQL_CREATE="CREATE TABLE IF NOT EXISTS CAJERO("+
-			"MONEDA DECIMAL (10,2) PRIMARY KEY,"+
-			"CANTIDAD DECIMAL (10,2) NOT NULL"+
+			"MONEDA DOUBLE PRIMARY KEY,"+ // CAMBIE DE DECIMAL A DOBLE
+			"CANTIDAD INT CHECK (CANTIDAD >=0) NOT NULL"+ //CAMBIE DE DECIMAL A INT
 			")";
 	
 	public static void main(String[] args) {
