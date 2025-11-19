@@ -11,6 +11,18 @@ import java.util.Date;
  */
 @Entity
 @NamedQuery(name="Emp.findAll", query="SELECT e FROM Emp e")
+@NamedQuery(
+	    name = "Emp.updateOne",
+	    query = "UPDATE Emp e SET e.sal = 5000 WHERE e.empno = 7369"
+	)
+@NamedQuery(
+	    name = "Emp.updateWho",
+	    query = "UPDATE Emp e SET e.sal = :nuevoSal WHERE e.empno = :num"
+	)
+@NamedQuery(
+			name = "Emp.deleteOne",
+			query = "DELETE Emp e where e.empno = 7369"
+		)
 public class Emp implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -102,4 +114,21 @@ public class Emp implements Serializable {
 		this.dept = dept;
 	}
 
+	@Override
+	public String toString() {
+	    return String.format(
+	        "\n+---------+-------------------------+\n" +
+	        "| Campo   | Valor                   |\n" +
+	        "+---------+-------------------------+\n" +
+	        "| empno   | %-23s |\n" +
+	        "| ename   | %-23s |\n" +
+	        "| job     | %-23s |\n" +
+	        "| sal     | %-23s |\n" +
+	        "| comm    | %-23s |\n" +
+	        "| mgr     | %-23s |\n" +
+	        "| hiredate| %-23s |\n" +
+	        "+---------+-------------------------+",
+	        empno, ename, job, sal, comm, mgr, hiredate
+	    );
+	}
 }

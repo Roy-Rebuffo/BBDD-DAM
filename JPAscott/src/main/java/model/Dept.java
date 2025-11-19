@@ -28,6 +28,13 @@ public class Dept implements Serializable {
 	public Dept() {
 	}
 
+	public Dept(int deptno, String dname, String loc) {
+		super();
+		this.deptno = deptno;
+		this.dname = dname;
+		this.loc = loc;
+	}
+
 	public int getDeptno() {
 		return this.deptno;
 	}
@@ -76,8 +83,17 @@ public class Dept implements Serializable {
 
 	@Override
 	public String toString() {
-		String cadena = "Dept [deptno=" + deptno + ", dname=" + dname + ", loc=" + loc ;
-		
+		String cadena = 
+		String.format(
+		        "+---------+-------------------------+\n" +
+		        "| Campo   | Valor                   |\n" +
+		        "+---------+-------------------------+\n" +
+		        "| deptno  | %-23s |\n" +
+		        "| dname   | %-23s |\n" +
+		        "| loc     | %-23s |\n" +
+		        "+---------+-------------------------+",
+		        deptno, dname, loc
+		    );
 		for (Emp emp : emps) {
 			cadena = cadena + emp + "\n";
 		}

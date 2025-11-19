@@ -1,3 +1,5 @@
+//Hacer un CRUD completo
+
 package Principal;
 
 import java.util.List;
@@ -9,8 +11,9 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import model.Dept;
+import model.Emp;
 
-public class Principal5 {
+public class Principal6 {
 
 	public static void main(String[] args) {
 		EntityManagerFactory emf = 
@@ -20,15 +23,12 @@ public class Principal5 {
 		EntityTransaction transaccion = em.getTransaction();
 		transaccion.begin();
 		
-		TypedQuery<Dept> consulta = 
-				(TypedQuery<Dept>) em.createNamedQuery("Dept.findAll");
 		
-		List<Dept> lista = consulta.getResultList();
+		TypedQuery<Emp> consulta = 
+				(TypedQuery<Emp>) em.createNamedQuery("Emp.updateOne");
 		
-		for (Dept a : lista) {
-			
-			System.out.println(a);
-		}
+		int filas = consulta.executeUpdate();
+		
 		transaccion.commit();
 		em.close();
 
